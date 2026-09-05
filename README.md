@@ -235,8 +235,8 @@ public class PaymentController {
 
 ```json
 {
-    "customerName": "Monika",
-    "customerEmail": "jkmonika@gmail.com",
+    "customerName": "sanjaithun",
+    "customerEmail": "sanjaithun@gmail.com",
     "amount": 4999.00,
     "failureReason": "Payment window closed by user"
 }
@@ -250,8 +250,8 @@ public class PaymentController {
     "message": "Payment failure recorded",
     "data": {
         "id": 5,
-        "customerName": "Monika",
-        "customerEmail": "jkmonika@gmail.com",
+        "customerName": "sanjaithun",
+        "customerEmail": "sanjaithun@gmail.com",
         "amount": 4999.0,
         "failureReason": "Payment window closed by user",
         "timestamp": "2026-09-05T19:00:00.123456"
@@ -271,8 +271,8 @@ public class PaymentController {
 [
     {
         "id": 5,
-        "customerName": "Monika",
-        "customerEmail": "jkmonika@gmail.com",
+        "customerName": "sanjaithun",
+        "customerEmail": "sanjaithun@gmail.com",
         "amount": 4999.0,
         "failureReason": "Payment window closed by user",
         "timestamp": "2026-09-05T19:00:00.123456"
