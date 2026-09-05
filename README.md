@@ -1,29 +1,54 @@
-```markdown
 # 🚀 RevRecover — Autonomous Revenue Recovery Platform
 
 [![Spring Boot](https://img.shields.io/badge/Backend-Spring%20Boot%203.x-brightgreen)](https://spring.io/projects/spring-boot)
 [![Razorpay](https://img.shields.io/badge/Payments-Razorpay%20Checkout-blue)](https://razorpay.com/)
 [![Database](https://img.shields.io/badge/Database-H2%20In--Memory-orange)](https://www.h2database.com/)
 [![Tailwind CSS](https://img.shields.io/badge/Frontend-Tailwind%20CSS-38B2AC)](https://tailwindcss.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
- ![Storefront UI](/images/page-1.png)
 RevRecover is a real-time payment recovery platform engineered to intercept checkout abandonments at the exact millisecond they occur. Built for the Razorpay Buildathon, this platform bridges the gap between payment gateway drop-offs and actionable merchant recovery strategies. By tapping into Razorpay's native checkout hooks and a high-performance Spring Boot API, RevRecover logs failures into a live diagnostic dashboard, empowering merchants to initiate AI-assisted recovery nudges immediately.
+
+---
+
+## 📸 Screenshots
+
+<table>
+  <tr>
+    <td align="center"><b>🔐 Login / Checkout</b></td>
+    <td align="center"><b>💳 Payment Gateway</b></td>
+    <td align="center"><b>📊 Merchant Dashboard</b></td>
+  </tr>
+  <tr>
+    <td><img src="./images/page-1.png" alt="Login / Checkout Page" width="280"/></td>
+    <td><img src="./images/page-2.png" alt="Payment Gateway" width="280"/></td>
+    <td><img src="./images/page-3.png" alt="Merchant Dashboard" width="280"/></td>
+  </tr>
+</table>
+
+---
+
+## 📑 Table of Contents
+
+- [Problem & Solution](#-problem--solution)
+- [System Architecture & Engineering Design](#️-system-architecture--engineering-design)
+- [Tech Stack & Infrastructure Specifications](#-tech-stack--infrastructure-specifications)
+- [Core Mechanics: Detailed Execution Steps](#️-core-mechanics-detailed-execution-steps)
+- [API Reference & Endpoints](#-api-reference--endpoints)
+- [Local Deployment & Running Guide](#-local-deployment--running-guide)
+- [Future Roadmap: AI Strategy & Autonomous Recovery Engine](#-future-roadmap-ai-strategy--autonomous-recovery-engine)
+- [License & Acknowledgements](#-license--acknowledgements)
 
 ---
 
 ## 🎯 Problem & Solution
 
-**The Core Challenge:**  
+**The Core Challenge:**
 E-commerce businesses lose significant revenue due to cart abandonment. Up to 70% of online checkout attempts end in drop-offs or failures (network disruptions, user hesitation, closed tabs) without merchant visibility. Standard analytics only indicate that a user left; they do not capture payment intent, context, or actionable follow-up vectors.
 
-**The RevRecover Solution:**  
+**The RevRecover Solution:**
 RevRecover introduces a real-time interception layer. Instead of waiting for asynchronous server webhooks from completed transactions, RevRecover actively monitors the Razorpay checkout iframe lifecycle. When a user exits the modal or experiences a failure, the client captures session metadata (Name, Email, Intended Amount, Reason) and posts it to a merchant diagnostic queue.
- 
+
 ---
-![Storefront UI](/images/page-2.png)
-
-![Storefront UI](/images/page-3.png)
-
 
 ## 🏗️ System Architecture & Engineering Design
 
@@ -61,10 +86,8 @@ graph TD
     Ctrl -->|4. Persist Event| Svc --> Repo --> DB
     Poll -- "5. GET /api/payments/failures" --> Ctrl
     Dash -->|6. Render Metrics & Queue| Poll
-
 ```
 
- 
 ### 2. Comprehensive Class Diagram (UML)
 
 ```mermaid
@@ -101,10 +124,8 @@ classDiagram
 
     PaymentController --> PaymentRepository : injects via @Autowired
     PaymentRepository --> PaymentFailure : manages ORM mapping
-
 ```
 
- 
 ### 3. Complete End-to-End Sequence Flow
 
 ```mermaid
@@ -133,9 +154,8 @@ sequenceDiagram
         Backend-->>Dashboard: 200 OK JSON Array
     end
     Dashboard->>Dashboard: Re-calculates Lost Revenue & renders rows
-
 ```
- 
+
 ---
 
 ## 💻 Tech Stack & Infrastructure Specifications
@@ -149,7 +169,6 @@ sequenceDiagram
 | **Persistence** | Spring Data JPA / Hibernate | Object-Relational Mapping (ORM) layer executing SQL generation. |
 | **Database** | H2 Database Engine | In-memory DB running at `jdbc:h2:mem:testdb` with built-in web console. |
 
- 
 ---
 
 ## ⚙️ Core Mechanics: Detailed Execution Steps
@@ -173,7 +192,6 @@ modal: {
         });
     }
 }
-
 ```
 
 ### Ingestion & Persistence Layer
@@ -201,9 +219,8 @@ public class PaymentController {
         return ResponseEntity.ok(response);
     }
 }
-
 ```
- 
+
 ---
 
 ## 🔌 API Reference & Endpoints
@@ -223,7 +240,6 @@ public class PaymentController {
     "amount": 4999.00,
     "failureReason": "Payment window closed by user"
 }
-
 ```
 
 **Sample Response Payload (200 OK):**
@@ -241,9 +257,8 @@ public class PaymentController {
         "timestamp": "2026-09-05T19:00:00.123456"
     }
 }
-
 ```
- 
+
 ### 2. Fetch All Logged Failures
 
 * **HTTP Method:** `GET`
@@ -263,9 +278,8 @@ public class PaymentController {
         "timestamp": "2026-09-05T19:00:00.123456"
     }
 ]
-
 ```
- 
+
 ---
 
 ## 🚀 Local Deployment & Running Guide
@@ -281,9 +295,8 @@ public class PaymentController {
 ### Step 1: Repository Cloning
 
 ```bash
-git clone [https://github.com/Sanjaithun/Razopay](https://github.com/Sanjaithun/Razopay)
+git clone https://github.com/Sanjaithun/Razopay
 cd revenue-recovery-razorpay
-
 ```
 
 ### Step 2: Key Configuration
@@ -293,10 +306,7 @@ cd revenue-recovery-razorpay
 3. Insert your Razorpay Test Key:
 ```javascript
 key: "rzp_test_YOUR_API_KEY_HERE"
-
 ```
-
-
 
 ### Step 3: Launch Spring Boot Backend
 
@@ -308,7 +318,6 @@ From the root directory containing `pom.xml`, execute:
 
 # Windows Command Prompt / PowerShell
 mvnw.cmd spring-boot:run
-
 ```
 
 * Server initialized at: `http://localhost:8080`
@@ -322,22 +331,73 @@ mvnw.cmd spring-boot:run
 * **Customer Storefront:** `http://127.0.0.1:5500/index.html`
 * **Merchant Dashboard:** `http://127.0.0.1:5500/dashboard.html`
 
-
-
 ### Step 5: Verify Functional Recovery Workflow
 
 1. Navigate to `index.html`, enter customer information, and click **Complete Secure Payment**.
 2. When the Razorpay iframe opens, click the **X** button to simulate user abandonment.
 3. Check `dashboard.html` to verify that the failure is ingested, metric cards recalculate, and the incident appears in the queue.
 
- 
+---
+
+## 🔮 Future Roadmap: AI Strategy & Autonomous Recovery Engine
+
+While the core platform establishes the zero-latency interception pipeline, the next phase of **RevRecover** introduces an **AI-driven Autonomous Recovery Engine**. Instead of relying on manual merchant intervention, this system uses predictive analytics and LLM-powered context engines to automatically decide, craft, and dispatch personalized recovery incentives.
+
+---
+
+### 🏗️ Target AI Infrastructure Architecture
+
+```mermaid
+graph TD
+    subgraph Core Pipeline [Current Baseline]
+        A[Razorpay Modal Exit] -->|Interception Event| B[Spring Boot API]
+        B -->|Persist Metadata| C[(H2 / PostgreSQL DB)]
+    end
+    subgraph AI Strategy Engine [Future Phase]
+        C -->|Event Stream| D[Behavioral Risk Evaluator]
+        D -->|Customer Profile & Intent Score| E[LLM Strategy Router]
+        
+        subgraph Decision Matrix
+            E -->|High Basket Value| F1[Dynamic Discount Generator]
+            E -->|Price Hesitation| F2[Free Shipping Nudge]
+            E -->|Technical Drop-off| F3[Alternative Payment Vector]
+        end
+        F1 & F2 & F3 -->|Prompt Context| G[Generative Copy Engine]
+    end
+    subgraph Autonomous Dispatch
+        G -->|Personalized Offer + Direct Pay Link| H[Omnichannel Dispatcher]
+        H -->|SMS / WhatsApp / Email| I[Customer]
+    end
+```
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Gateway as Razorpay Interceptor
+    participant Engine as RevRecover API
+    participant AI as AI Strategy Engine (LLM)
+    participant Channel as WhatsApp / SMS Gateway
+    participant Customer as Customer
+    Gateway->>Engine: Post Abandonment Event (Amount, Session Duration, Customer Info)
+    Engine->>AI: Evaluate Event Data + Customer Purchase History
+    
+    rect rgb(240, 248, 255)
+        Note over AI: 1. Predicts Drop-off Reason (e.g., Price Friction)<br/>2. Calculates Max Allowed Margin Discount<br/>3. Drafts Personalized Conversational Copy
+    end
+    AI-->>Engine: Returns Action Strategy & Customized Payload
+    Engine->>Channel: Trigger Recovery Link with Single-Use Coupon Token
+    Channel->>Customer: Delivers Personalized WhatsApp Message
+    
+    alt Customer Completes Payment
+        Customer->>Gateway: Clicks One-Tap Recovery Link
+        Gateway-->>Engine: Webhook: Payment Recovered
+        Engine->>Engine: Update Dashboard Analytics (ROAS & Recovered Revenue)
+    end
+```
+
 ---
 
 ## 📜 License & Acknowledgements
 
 * **License:** Distributed under the MIT License.
 * **Hackathon:** Developed exclusively for the **Razorpay Buildathon**.
-
-
-
-```
