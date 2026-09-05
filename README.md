@@ -8,7 +8,7 @@
 > **[IMAGE 1 INSTRUCTION: Hero Banner]**  
 > *Where to put it:* Right here, below the badges.  
 > *What to add:* Create a high-quality 1200x400px banner image named `01-hero-banner.png` showing your project logo, the Razorpay logo, and a tagline like "Turning Drop-offs into Dollars."  
-> *Markdown code:* `![RevRecover Banner](./docs/images/01-hero-banner.png)`
+> *Markdown code:* `![RevRecover Banner](./images/page-1.png)`
 
 RevRecover is a real-time payment recovery system designed to capture checkout abandonments the exact millisecond they happen. Built specifically for the Razorpay Buildathon, this platform bridges the critical gap between payment gateway drop-offs and actionable merchant recovery strategies. By leveraging Razorpay's native event hooks and a robust Spring Boot backend, RevRecover logs failures into a live diagnostic dashboard, allowing merchants to trigger AI-driven recovery nudges instantly.
 
@@ -25,7 +25,7 @@ We built a deterministic interception layer. Instead of waiting for a webhook fr
 > **[IMAGE 2 INSTRUCTION: The Storefront UI]**  
 > *Where to put it:* Here, to visually introduce the user journey.  
 > *What to add:* A screenshot named `02-storefront.png` showing your clean, Tailwind-styled checkout form before the user clicks pay.  
-> *Markdown code:* `![Storefront UI](./docs/images/02-storefront.png)`
+> *Markdown code:* `![Storefront UI](./images/page-1.png)`
 
 ---
 
