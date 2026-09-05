@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RevRecover Console | Advanced Metrics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                deep: '#111827',
+                surface: '#1F2937',
+                accent: '#4F46E5',
+                accentHover: '#4338CA',
+              }
+            },
+            keyframes: {
+              fadeInUp: {
+                '0%': { opacity: '0', transform: 'translateY(10px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              slideInLeft: {
+                '0%': { transform: 'translateX(-20px)', opacity: '0' },
+                '100%': { transform: 'translateX(0)', opacity: '1' },
+              },
+              pulseSlow: {
+                '0%, 100%': { opacity: '1' },
+                '50%': { opacity: '0.4' },
+              }
+            },
+            animation: {
+              fadeInUp: 'fadeInUp 0.5s ease-out forwards',
+              slideInLeft: 'slideInLeft 0.4s ease-out forwards',
+              pulseSlow: 'pulseSlow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      * { transition: all 0.2s ease-in-out; }
+      .animate-on-load { opacity: 0; }
+      .delay-100 { animation-delay: 100ms; }
+      .delay-200 { animation-delay: 200ms; }
+      .delay-300 { animation-delay: 300ms; }
+    </style>
+</head>
+<body class="bg-[#0F172A] text-slate-100 font-sans h-screen overflow-hidden">
+    <div class="flex h-full">
+        
+        <!-- Premium Glass Sidebar -->
+        <aside class="w-68 bg-brand-surface/50 backdrop-blur-xl border-r border-slate-700/50 p-6 flex flex-col justify-between animate-slideInLeft">
+            <div>
+                <div class="flex items-center gap-2 mb-10">
+                    <div class="w-8 h-8 bg-brand-accent rounded-full grid place-content-center text-white font-bold">R</div>
+                    <h2 class="text-2xl font-extrabold text-white">Rev<span class="text-brand-accent">Recover</span></h2>
+                </div>
+                <nav class="space-y-2">
+                    <a href="#" class="group flex items-center gap-3 px-4 py-3 bg-brand-accent text-white rounded-xl text-sm font-semibold shadow-lg">
+                        Dashboard
+                    </a>
+                    <a href="#" class="group flex items-center gap-3 px-4 py-3 text-slate-400 hover:bg-brand-surface hover:text-white rounded-xl text-sm font-medium">
+                        Recovery Diagnostics
+                    </a>
+                </nav>
+            </div>
+            <a href="index.html" class="text-xs text-slate-500 hover:text-white group flex items-center gap-1">
+                <span class="group-hover:-translate-x-1 transition-transform inline-block">←</span> Back to Store
+            </a>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 overflow-y-auto p-10 space-y-10">
+            <header class="flex justify-between items-center animate-fadeInUp">
+                <div>
+                    <h1 class="text-3xl font-extrabold text-white tracking-tight">Revenue Operations Console</h1>
+                    <p class="text-slate-400 mt-1">Real-time failed payment diagnosis and recovery.</p>
+                </div>
+                <div class="flex items-center gap-2 px-3 py-1.5 bg-green-500/10 text-green-400 text-xs font-semibold rounded-full border border-green-500/20 animate-pulseSlow">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                    </span>
+                    Live Feed Active
+                </div>
+            </header>
+
+            <!-- Metrics Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="bg-brand-surface border border-slate-700/50 p-6 rounded-2xl shadow-xl animate-fadeInUp delay-100">
+                    <p class="text-xs text-slate-400 font-medium tracking-wide uppercase">Identified Failures (7D)</p>
+                    <p id="metric-failed" class="text-3xl font-extrabold mt-2 text-white tracking-tighter">₹0</p>
+                </div>
+                <div class="bg-brand-surface border border-slate-700/50 p-6 rounded-2xl shadow-xl animate-fadeInUp delay-100">
+                    <p class="text-xs text-slate-400 font-medium tracking-wide uppercase">Recovered Revenue</p>
+                    <p id="metric-recovered" class="text-3xl font-extrabold mt-2 text-green-400 tracking-tighter">₹0</p>
+                </div>
+                <div class="bg-brand-surface border border-slate-700/50 p-6 rounded-2xl shadow-xl animate-fadeInUp delay-200">
+                    <p class="text-xs text-slate-400 font-medium tracking-wide uppercase">Net Recovery Rate</p>
+                    <p id="metric-rate" class="text-3xl font-extrabold mt-2 text-brand-accent tracking-tighter">0%</p>
+                </div>
+                <div class="bg-brand-surface border border-slate-700/50 p-6 rounded-2xl shadow-xl animate-fadeInUp delay-200">
+                    <p class="text-xs text-slate-400 font-medium tracking-wide uppercase">Active Automated Nudges</p>
+                    <p id="metric-workflows" class="text-3xl font-extrabold mt-2 text-slate-200 tracking-tighter">0</p>
+                </div>
+            </div>
+
+            <!-- Advanced Data Table -->
+            <div class="bg-brand-surface border border-slate-700/50 rounded-2xl shadow-xl overflow-hidden animate-fadeInUp delay-300">
+                <div class="px-6 py-5 border-b border-slate-700/50 flex justify-between items-center">
+                    <h3 class="text-lg font-bold text-white">Failure Diagnostic Queue</h3>
+                    <div class="text-sm text-slate-400">Showing latest <span id="failure-count">0</span> failures</div>
+                </div>
+                
+                <div class="max-h-[500px] overflow-y-auto">
+                    <table class="w-full text-left border-collapse text-sm">
+                        <thead class="sticky top-0 bg-brand-surface z-10">
+                            <tr class="border-b border-slate-700 text-slate-400 font-semibold text-xs uppercase tracking-wider">
+                                <th class="p-5">Reference ID</th>
+                                <th class="p-5">Customer</th>
+                                <th class="p-5">Amount</th>
+                                <th class="p-5">Failure Root Cause</th>
+                                <th class="p-5">Diagnostic Strategy</th>
+                                <th class="p-5 text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="realtime-failure-feed">
+                            <!-- Dynamic rows from JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="js/dashboard.js"></script>
+</body>
+</html>
