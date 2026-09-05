@@ -25,9 +25,11 @@ We built a deterministic interception layer. Instead of waiting for a webhook fr
 > **[IMAGE 2 INSTRUCTION: The Storefront UI]**  
 > *Where to put it:* Here, to visually introduce the user journey.  
 > *What to add:* A screenshot named `02-storefront.png` showing your clean, Tailwind-styled checkout form before the user clicks pay.  
-> *Markdown code:* `![Storefront UI](./images/page-1.png)`
+> *Markdown code:* `![Storefront UI](./images/page-1.png)
+`
 
 ---
+![Storefront UI](./images/page-1.png)
 
 ## 🏗️ System Architecture & Design
 
