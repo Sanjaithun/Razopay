@@ -6,7 +6,7 @@
 [![Database](https://img.shields.io/badge/Database-H2%20In--Memory-orange)](https://www.h2database.com/)
 [![Tailwind CSS](https://img.shields.io/badge/Frontend-Tailwind%20CSS-38B2AC)](https://tailwindcss.com/)
 
- ![Storefront UI](./images/page-1.png)
+ ![Storefront UI](/images/page-1.png)
 RevRecover is a real-time payment recovery platform engineered to intercept checkout abandonments at the exact millisecond they occur. Built for the Razorpay Buildathon, this platform bridges the gap between payment gateway drop-offs and actionable merchant recovery strategies. By tapping into Razorpay's native checkout hooks and a high-performance Spring Boot API, RevRecover logs failures into a live diagnostic dashboard, empowering merchants to initiate AI-assisted recovery nudges immediately.
 
 ---
@@ -20,9 +20,9 @@ E-commerce businesses lose significant revenue due to cart abandonment. Up to 70
 RevRecover introduces a real-time interception layer. Instead of waiting for asynchronous server webhooks from completed transactions, RevRecover actively monitors the Razorpay checkout iframe lifecycle. When a user exits the modal or experiences a failure, the client captures session metadata (Name, Email, Intended Amount, Reason) and posts it to a merchant diagnostic queue.
  
 ---
-![Storefront UI](./images/page-2.png)
+![Storefront UI](/images/page-2.png)
 
-![Storefront UI](./images/page-3.png)
+![Storefront UI](/images/page-3.png)
 
 
 ## 🏗️ System Architecture & Engineering Design
@@ -338,6 +338,6 @@ mvnw.cmd spring-boot:run
 * **License:** Distributed under the MIT License.
 * **Hackathon:** Developed exclusively for the **Razorpay Buildathon**.
 
-```
+
 
 ```
